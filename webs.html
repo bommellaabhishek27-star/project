@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWAD SAMOSA | Homemade Kachori</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css for smooth entry -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <style>
+        :root {
+            --primary-red: #e63946;
+            --gold: #d4af37;
+            --dark-bg: #121212;
+            --deep-brown: #1e140f;
+            --card-bg: #252525;
+            --text-white: #ffffff;
+            --text-muted: #bdae93;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Global Components --- */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            text-align: center;
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: var(--primary-red);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(230, 57, 70, 0.3);
+        }
+
+        .btn-whatsapp {
+            background: #25d366;
+            color: white;
+        }
+
+        .badge {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid var(--gold);
+            margin-right: 8px;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        /* --- Header --- */
+        header {
+            background: rgba(18, 18, 18, 0.95);
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .logo span { color: var(--primary-red); }
+
+        .nav-links { display: none; }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 40px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at top right, #2c1e17, #121212);
+            gap: 30px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            line-height: 1.2;
+            word-wrap: break-word;
+        }
+
+        .hero-content p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+            filter: drop-shadow(0 20px 50px rgba(0,0,0,0.5));
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* --- Quick Menu / App Cards --- */
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            word-wrap: break-word;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            padding: 30px 0;
+        }
+
+        .food-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 12px;
+            position: relative;
+            transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .food-card:hover {
+            transform: scale(1.02);
+            border-color: var(--gold);
+        }
+
+        .food-card img {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 12px;
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15);
+            transition: var(--transition);
+        }
+
+        .food-card:hover img {
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.25);
+            transform: scale(1.02);
+        }
+
+        .food-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .food-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .add-btn {
+            background: var(--primary-red);
+            color: white;
+            width: 36px;
+            height: 36px;
+            min-width: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+
+        .add-btn:active { transform: scale(0.95); }
+
+        /* --- Why Choose Us --- */
+        .features {
+            background: var(--deep-brown);
+            padding: 40px 0;
+            margin-top: 30px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .feature-item {
+            padding: 15px;
+        }
+
+        .feature-item i {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .feature-item h4 {
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- Special Offer Banner --- */
+        .offer-banner {
+            background: linear-gradient(135deg, var(--primary-red), #93291e);
+            border-radius: 20px;
+            padding: 25px 15px;
+            margin: 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offer-banner h2 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            word-wrap: break-word;
+        }
+
+        .offer-banner p {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        /* --- Reviews --- */
+        .reviews { 
+            padding: 40px 0; 
+        }
+
+        .review-card {
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--gold);
+        }
+
+        .review-card p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .stars { 
+            color: var(--gold); 
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* --- Footer & Contact --- */
+        footer {
+            background: #000;
+            padding: 40px 0 120px 0;
+            border-top: 1px solid var(--deep-brown);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        footer > .container > p {
+            font-size: 0.75rem;
+            margin-top: 30px;
+        }
+
+        footer h4 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        footer a {
+            color: #25d366;
+            text-decoration: none;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 200px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        /* --- Mobile Sticky & Floating Buttons --- */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 100px;
+            right: 15px;
+            background: #25d366;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            z-index: 1001;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .mobile-sticky-order {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--dark-bg);
+            padding: 10px 5px;
+            display: flex;
+            gap: 8px;
+            z-index: 1000;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mobile-sticky-order a {
+            flex: 1;
+            padding: 12px 12px !important;
+            font-size: 0.85rem;
+            border-radius: 10px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* --- Cart Sidebar --- */
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.3rem;
+            color: var(--gold);
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .cart-icon:hover { color: white; }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--primary-red);
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            font-weight: 700;
+        }
+
+        .cart-sidebar {
+            position: fixed;
+            right: -100%;
+            top: 0;
+            width: 90%;
+            max-width: 350px;
+            height: 100vh;
+            background: var(--card-bg);
+            border-left: 2px solid var(--gold);
+            z-index: 2000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            padding: 15px;
+        }
+
+        .cart-sidebar.active { right: 0; }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 12px;
+        }
+
+        .cart-header h3 {
+            font-size: 1rem;
+        }
+
+        .cart-close {
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-size: 1.3rem;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-item {
+            background: var(--dark-bg);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            font-size: 0.85rem;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--card-bg);
+            padding: 4px 8px;
+            border-radius: 6px;
+        }
+
+        .qty-btn {
+            background: none;
+            border: none;
+            color: var(--gold);
+            cursor: pointer;
+            font-size: 0.9rem;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .qty-btn:hover { color: white; }
+
+        .quantity { 
+            color: white; 
+            font-weight: 600; 
+            min-width: 15px; 
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        .item-price {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .remove-btn {
+            background: var(--primary-red);
+            border: none;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.7rem;
+            white-space: nowrap;
+        }
+
+        .cart-empty {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 30px 15px;
+            font-size: 0.9rem;
+        }
+
+        .cart-total {
+            border-top: 2px solid var(--gold);
+            padding-top: 12px;
+            margin-top: 15px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-align: right;
+        }
+
+        .cart-checkout-btn {
+            width: 100%;
+            background: var(--primary-red);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            margin-top: 15px;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .cart-checkout-btn:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 10px 20px rgba(230, 57, 70, 0.3); 
+        }
+
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1999;
+            display: none;
+        }
+
+        .cart-overlay.active { display: block; }
+
+        /* ======================================
+           TABLET MEDIA QUERIES (600px - 900px)
+           ====================================== */
+        @media (min-width: 600px) {
+            .container {
+                width: 95%;
+            }
+
+            .logo {
+                font-size: 1.8rem;
+            }
+
+            .btn {
+                padding: 11px 20px;
+                font-size: 0.95rem;
+            }
+
+            .hero {
+                padding: 50px 0;
+            }
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+                margin-bottom: 12px;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+                margin-bottom: 25px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 35px;
+            }
+
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 18px;
+                padding: 35px 0;
+            }
+
+            .food-card {
+                padding: 14px;
+            }
+
+            .food-card img {
+                height: 180px;
+                margin-bottom: 14px;
+            }
+
+            .price {
+                font-size: 1.3rem;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+
+            .feature-item {
+                padding: 20px;
+            }
+
+            .feature-item i {
+                font-size: 2.2rem;
+            }
+
+            .offer-banner {
+                padding: 35px 20px;
+                margin: 50px 0;
+            }
+
+            .offer-banner h2 {
+                font-size: 2rem;
+            }
+
+            .review-card {
+                padding: 22px;
+            }
+
+            footer {
+                padding: 50px 0 120px 0;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 35px;
+            }
+
+            .mobile-sticky-order {
+                gap: 10px;
+                padding: 12px 8px;
+            }
+
+            .mobile-sticky-order a {
+                font-size: 0.9rem;
+                padding: 12px 15px !important;
+            }
+
+            .cart-sidebar {
+                width: 85%;
+                max-width: 350px;
+            }
+        }
+
+        /* ======================================
+           DESKTOP MEDIA QUERIES (900px+)
+           ====================================== */
+        @media (min-width: 900px) {
+            .container {
+                width: 90%;
+                max-width: 1200px;
+            }
+
+            .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+
+            nav {
+                gap: 20px;
+                flex-wrap: nowrap;
+            }
+
+            .logo {
+                font-size: 2rem;
+                flex: 0 0 auto;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 30px;
+                flex: 1;
+            }
+
+            .nav-links a {
+                color: white;
+                text-decoration: none;
+                font-size: 0.9rem;
+                transition: var(--transition);
+            }
+
+            .nav-links a:hover { 
+                color: var(--gold); 
+            }
+
+            .hero {
+                flex-direction: row;
+                text-align: left;
+                padding: 100px 0;
+                gap: 40px;
+                align-items: flex-start;
+            }
+
+            .hero-content {
+                flex: 1;
+            }
+
+            .hero-content h1 {
+                font-size: 3.5rem;
+                margin-bottom: 15px;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+                margin-bottom: 30px;
+            }
+
+            .hero-image {
+                flex: 1;
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            .hero-image img {
+                max-width: 500px;
+                height: auto;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+                margin-bottom: 40px;
+            }
+
+            .menu-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 25px;
+                padding: 40px 0;
+            }
+
+            .food-card {
+                padding: 15px;
+                border-radius: 25px;
+            }
+
+            .food-card:hover {
+                transform: scale(1.03);
+            }
+
+            .food-card img {
+                height: 250px;
+                border-radius: 20px;
+                margin-bottom: 15px;
+            }
+
+            .price {
+                font-size: 1.4rem;
+            }
+
+            .add-btn {
+                width: 40px;
+                height: 40px;
+                border-radius: 12px;
+            }
+
+            .features {
+                padding: 60px 0;
+                margin-top: 50px;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+            }
+
+            .feature-item {
+                padding: 0;
+            }
+
+            .feature-item i {
+                font-size: 2.5rem;
+            }
+
+            .offer-banner {
+                padding: 40px;
+                margin: 60px 0;
+            }
+
+            .offer-banner h2 {
+                font-size: 2.5rem;
+            }
+
+            .reviews {
+                padding: 60px 0;
+            }
+
+            .review-card {
+                padding: 25px;
+            }
+
+            footer {
+                padding: 60px 0 100px 0;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 40px;
+            }
+
+            .map-container {
+                height: 200px;
+            }
+
+            .mobile-sticky-order {
+                display: none;
+            }
+
+            .cart-sidebar {
+                width: 350px;
+            }
+        }
+
+        /* ======================================
+           LARGE DESKTOP (1200px+)
+           ====================================== */
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1300px;
+            }
+
+            .hero {
+                padding: 120px 0;
+            }
+
+            .hero-content h1 {
+                font-size: 3.8rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">SW<span>AD</span></a>
+                <div class="nav-links">
+                    <a href="#menu">Menu</a>
+                    <a href="#why">Why Us</a>
+                    <a href="#reviews">Reviews</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;">
+                    <div class="cart-icon" id="cartIcon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-badge" id="cartBadge" style="display: none;">0</span>
+                    </div>
+                    <a href="https://wa.me/ 9885475214" class="btn btn-primary">Order Now</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero container">
+        <div class="hero-content animate__animated animate__fadeInLeft">
+            <div class="badges">
+                <span class="badge">100% Homemade</span>
+                <span class="badge">Fresh & Hygienic</span>
+            </div>
+            <h1>SWAD SAMOSA</h1>
+            <p>Experience the authentic crunch of Kukatpally-style kachori. Made with hand-picked spices and love, delivered fresh to your doorstep.</p>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; width: 100%;">
+                <a href="#menu" class="btn btn-primary" style="flex: 1; min-width: 130px;">Order Now</a>
+                <a href="https://wa.me/9885475214" class="btn btn-whatsapp" style="flex: 1; min-width: 130px;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            </div>
+        </div>
+        <div class="hero-image animate__animated animate__zoomIn">
+            <!-- Samosa hero photo -->
+           <img src="images copy.jpeg" alt="samosa">
+        </div>
+    </section>
+
+    <!-- Quick Menu Section -->
+    <section class="container" id="menu" style="padding: 60px 0;">
+        <h2 class="section-title">Our Best Sellers</h2>
+        <div class="menu-grid">
+            <!-- Card 1 -->
+            <div class="food-card" data-id="1" data-name="Special Kachori" data-price="25">
+                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Kachori">
+                <div class="food-info">
+                    <h3>Special Kachori</h3>
+                    <p>Crispy kachori with rich spiced lentil filling, made fresh in Kukatpally style.</p>
+                    <div class="price-row">
+                        <span class="price">₹25</span>
+                        <div class="add-btn"><i class="fas fa-plus"></i></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="food-card" data-id="2" data-name="Mumbai Style Vada Pav" data-price="25">
+                <img src="https://images.unsplash.com/photo-1626132647523-66f5bf380027?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Vada Pav">
+                <div class="food-info">
+                    <h3>Mumbai Style Vada Pav</h3>
+                    <p>The ultimate street food. Spiced potato fritter inside a soft bun with garlic chutney.</p>
+                    <div class="price-row">
+                        <span class="price">₹25</span>
+                        <div class="add-btn"><i class="fas fa-plus"></i></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="food-card" data-id="3" data-name="Premium Paneer Samosa" data-price="35">
+                <img src="24c9962e6f1ea91e60faec56daa323dc.jpg" alt="Paneer Samosa">
+                <div class="food-info">
+                    <h3>Premium Paneer Samosa</h3>
+                    <p>Fusion twist with rich paneer filling and secret house spices.</p>
+                    <div class="price-row">
+                        <span class="price">₹35</span>
+                        <div class="add-btn"><i class="fas fa-plus"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="features" id="why">
+        <div class="container">
+            <h2 class="section-title">Why Swad?</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class="fas fa-leaf"></i>
+                    <h4>Fresh Ingredients</h4>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-calendar-check"></i>
+                    <h4>Made Daily</h4>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-heart"></i>
+                    <h4>Made with Love</h4>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-hands-bubbles"></i>
+                    <h4>Hygienically Prepared</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offer -->
+    <section class="container">
+        <div class="offer-banner animate__animated animate__pulse animate__infinite">
+            <h2>FREE HOME DELIVERY</h2>
+            <p>On all orders . Limited time offer!</p>
+            <br>
+            <a href="https://wa.me/919885475214" class="btn" style="background: white; color: var(--primary-red);">Claim Offer Now</a>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="container reviews" id="reviews">
+        <h2 class="section-title">What Customers Say</h2>
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>"The best samosas I've had in years. Reminds me of home! The packaging was very clean."</p>
+            <strong style="color: var(--gold); display: block; margin-top: 10px;">- Rahul Sharma</strong>
+        </div>
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>"Vada Pav was super spicy and fresh. Delivery was surprisingly fast."</p>
+            <strong style="color: var(--gold); display: block; margin-top: 10px;">- Priya Verma</strong>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <a href="#" class="logo">SW<span>AD</span></a>
+                    <p style="color: var(--text-muted); margin-top: 10px; font-size: 0.9rem;">Homemade goodness delivered to your doorstep. Every bite is a journey of taste.</p>
+                </div>
+                <div>
+                    <h4>Contact Us</h4>
+                    <p style="margin-top: 10px;"><i class="fas fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/919885475214" style="color: #25d366; text-decoration: none;">+91 9885475214</a></p>
+                    <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/917767916710" style="color: #25d366; text-decoration: none;">+91 7767916710</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> Kukatpally, Hyderabad</p>
+                </div>
+                <div>
+                    <h4>Find Us</h4>
+                    <div class="map-container">
+                        <!-- Replace with actual Google Maps Embed if needed -->
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3803.438123456789!2d78.3984000!3d17.4850000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bccb35dadcdabcd%3A0x1234567890abcdef!2sKukatpally%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1680000000000!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 40px; color: var(--text-muted); font-size: 0.8rem;">© 2023 Swad Startup. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3 style="color: var(--gold);">Your Cart</h3>
+            <button class="cart-close" id="cartClose">✕</button>
+        </div>
+        <div id="cartItems"></div>
+        <div id="cartTotal" style="display: none;" class="cart-total">
+            Total: ₹<span id="totalAmount">0</span>
+        </div>
+        <button class="cart-checkout-btn" id="checkoutBtn" style="display: none;" onclick="gotoCheckout()">Proceed to Order</button>
+    </div>
+
+    <!-- Mobile Sticky Footer Order Button -->
+    <div class="mobile-sticky-order" style="gap: 10px;">
+        <a href="https://wa.me/9885475214" class="btn btn-primary" style="flex: 1;">Order Now</a>
+        <a href="https://wa.me/919885475214" style="background: #25d366; color: white; padding: 15px 30px; border-radius: 50px; display: flex; align-items: center; justify-content: center; text-decoration: none; font-weight: 700; gap: 8px; flex: 1; border: none;">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+    </div>
+
+    <!-- Simple Animation on Scroll Logic -->
+    <script>
+        // Cart functionality
+        let cart = JSON.parse(localStorage.getItem('swadCart')) || {};
+
+        function updateCartUI() {
+            const cartItemsDiv = document.getElementById('cartItems');
+            const cartBadge = document.getElementById('cartBadge');
+            const cartTotal = document.getElementById('cartTotal');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            const totalAmount = document.getElementById('totalAmount');
+
+            const cartKeys = Object.keys(cart);
+            let totalItems = 0;
+            let totalPrice = 0;
+
+            if (cartKeys.length === 0) {
+                cartItemsDiv.innerHTML = '<div class="cart-empty">Your cart is empty. Add items to get started!</div>';
+                cartBadge.style.display = 'none';
+                cartTotal.style.display = 'none';
+                checkoutBtn.style.display = 'none';
+                return;
+            }
+
+            cartItemsDiv.innerHTML = '';
+            cartKeys.forEach(itemId => {
+                const item = cart[itemId];
+                totalItems += item.qty;
+                totalPrice += item.price * item.qty;
+
+                const cartItemEl = document.createElement('div');
+                cartItemEl.className = 'cart-item';
+                cartItemEl.innerHTML = `
+                    <div class="cart-item-name">${item.name}</div>
+                    <div class="cart-item-controls">
+                        <div class="quantity-control">
+                            <button class="qty-btn" onclick="updateQty('${itemId}', -1)">−</button>
+                            <span class="quantity">${item.qty}</span>
+                            <button class="qty-btn" onclick="updateQty('${itemId}', 1)">+</button>
+                        </div>
+                        <span class="item-price">₹${item.price * item.qty}</span>
+                        <button class="remove-btn" onclick="removeFromCart('${itemId}')">Remove</button>
+                    </div>
+                `;
+                cartItemsDiv.appendChild(cartItemEl);
+            });
+
+            if (totalItems > 0) {
+                cartBadge.textContent = totalItems;
+                cartBadge.style.display = 'flex';
+                totalAmount.textContent = totalPrice;
+                cartTotal.style.display = 'block';
+                checkoutBtn.style.display = 'block';
+            } else {
+                cartBadge.style.display = 'none';
+                cartTotal.style.display = 'none';
+                checkoutBtn.style.display = 'none';
+            }
+
+            localStorage.setItem('swadCart', JSON.stringify(cart));
+        }
+
+        function addToCart(itemId, name, price) {
+            if (cart[itemId]) {
+                cart[itemId].qty += 1;
+            } else {
+                cart[itemId] = { name, price, qty: 1 };
+            }
+            updateCartUI();
+            document.getElementById('cartSidebar').classList.add('active');
+            document.getElementById('cartOverlay').classList.add('active');
+        }
+
+        function removeFromCart(itemId) {
+            delete cart[itemId];
+            updateCartUI();
+        }
+
+        function updateQty(itemId, change) {
+            cart[itemId].qty += change;
+            if (cart[itemId].qty <= 0) {
+                removeFromCart(itemId);
+            } else {
+                updateCartUI();
+            }
+        }
+
+        function gotoCheckout() {
+            let message = 'Hi, I would like to order:\n\n';
+            Object.values(cart).forEach(item => {
+                message += `${item.name} x${item.qty} - ₹${item.price * item.qty}\n`;
+            });
+            const total = Object.values(cart).reduce((sum, item) => sum + (item.price * item.qty), 0);
+            message += `\nTotal: ₹${total}`;
+            
+            const whatsappNumber = '919885475214';
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+        }
+
+        // Add to cart button listeners
+        document.querySelectorAll('.add-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const card = this.closest('.food-card');
+                const itemId = card.dataset.id;
+                const name = card.dataset.name;
+                const price = parseInt(card.dataset.price);
+                addToCart(itemId, name, price);
+            });
+        });
+
+        // Cart toggle
+        document.getElementById('cartIcon').addEventListener('click', function() {
+            document.getElementById('cartSidebar').classList.toggle('active');
+            document.getElementById('cartOverlay').classList.toggle('active');
+        });
+
+        document.getElementById('cartClose').addEventListener('click', function() {
+            document.getElementById('cartSidebar').classList.remove('active');
+            document.getElementById('cartOverlay').classList.remove('active');
+        });
+
+        document.getElementById('cartOverlay').addEventListener('click', function() {
+            document.getElementById('cartSidebar').classList.remove('active');
+            document.getElementById('cartOverlay').classList.remove('active');
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Initialize cart UI on page load
+        updateCartUI();
+    </script>
+</body>
+</html>
